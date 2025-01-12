@@ -31,7 +31,9 @@ Ce projet web comprend :
 - Cloner le dépôt : 
 ```
 git clone https://github.com/Thomas-FAGOT/docker-tp-f-thomas
-cd tp-f-thomas
+cd docker-tp-f-thomas/server
+npm install
+cd ../
 ```
 
 ## Commande utiles
