@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  client:
+    build: 
+      context: ./client
+    ports:
+      - "8080:80"
+    networks:
+      - front-network
+
+  server:
+    build:
+      context: ./server
+      args:
+        NODE_ENV: ${NODE_ENV}
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}
+    networks:
+      - app-network
+      - front-network
+    depends_on:
+      - database
+
+  database:
+    image: postgres:17.1-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
+  front-network:
