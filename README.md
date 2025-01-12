@@ -10,6 +10,7 @@
   - [Commandes pour lancer en environnement de production](#commandes-pour-lancer-en-environnement-de-production)
   - [Commandes pour tester les logs en production](#commandes-pour-tester-les-logs-en-production)
   - [Commandes pour tester l'envoi d'email en développement](#commandes-pour-tester-lenvoi-demail-en-développement)
+- [Références utilisées](#références-utilisées)
 
 
 ## Description
@@ -44,7 +45,7 @@ docker-compose -f docker-compose.yml -f docker-compose-dev.yml --env-file dev.en
 
 ### Commandes pour build l'image en envrionnement de production
 ```
-docker-compose -f docker-compose.yml --env-file prod.env build
+docker-compose -f docker-compose.yml -f docker-compose-prod.yml --env-file prod.env build
 ```
 
 ### Commandes pour lancer en envrionnement de production
@@ -81,3 +82,14 @@ docker-compose -f docker-compose.yml -f docker-compose-dev.yml --env-file dev.en
 curl http://localhost:3000/send-email
 ```
 3. Rendez-vous sur cette page pour voir les emails envoyé : [mailHog](http://localhost:8025)
+
+## Références utilisées
+Pour ce TP j'ai principalement utiliser les supports suivant : 
+- Support de cours
+- ChatGPT
+- la doc sur [dockerhub](https://hub.docker.com)
+
+Pour les téchnologies utilisées, les voici : 
+- front end : simple fichier HTML
+- backend : NodeJs et Express
+- BDD : PostgreSQL
