@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Docker TP</title>
+  <script>
+    async function fetchUsers() {
+      try {
+        const response = await fetch("http://localhost:3000/users");
+        
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des utilisateurs");
+        }
+
+        const users = await response.json();
+        alert(`Utilisateurs : ${users[0].user} récupérés avec succès !`);
+      } catch (error) {
+        console.error(error);
+        alert("Une erreur s'est produite.");
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>Hello from Docker Frontend!</h1>
   <p>Ceci est mon nouveau frontend</p>
-  <button type="submit">Récupérer tous les utilisateurs</button>
+  <button type="button" onclick="fetchUsers()">Récupérer tous les utilisateurs</button>
 </body>
 </html>
